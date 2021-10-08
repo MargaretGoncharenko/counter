@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import "./App.css";
+import {Counter} from "./Counter";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export const App = () => {
+    let [data, setData] = useState(0)
+    const IncNum = (data: number) => {
+        if (data < 5) {
+            return setData(data + 1)
+        } else if (data === 5) {
+            return setData(data)
+        } else {
+            return
+        }
+    }
+    const ResetNum = (data: number) => {
+        setData(0)
+    }
+
+    return (
+        <Counter
+            data={data}
+            IncNum={IncNum}
+            ResetNum={ResetNum}
+        />
+    )
 }
 
-export default App;
+
+
+
